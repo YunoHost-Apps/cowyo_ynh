@@ -3,7 +3,8 @@
     "id": "cowyo",
     "packaging_format": 1,
     "description": {
-        "en": "A feature-rich wiki webserver for minimalists, packaged for YunoHost"
+        "en": "A feature-rich wiki webserver for minimalists.",
+        "fr": "Un serveur de wiki minimaliste mais riche en fonctionnalités."
     },
     "version": "2.12.0~ynh1",
     "url": "https://github.com/schollz/cowyo",
