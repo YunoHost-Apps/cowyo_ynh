@@ -30,6 +30,7 @@ No configuration required except specifying the domain to access it, and its pub
 #### Supported architectures
 
 * x86-64b - [![Build Status](https://ci-apps.yunohost.org/ci/logs/cowyo%20%28Apps%29.svg)](https://ci-apps.yunohost.org/ci/apps/cowyo/)/)
+* Testing - [![Build Status](https://ci-apps-unstable.yunohost.org/ci/logs/cowyo%20%28Apps%29.svg)](https://ci-apps-unstable.yunohost.org/ci/apps/cowyo/)/)
 * ARMv8-A - [![Build Status](https://ci-apps-arm.yunohost.org/ci/logs/cowyo%20(Community)%20(%7EARM%7E).svg)](https://ci-apps-arm.yunohost.org/ci/apps/cowyo/)/)
 * Jessie x86-64b - [![Build Status](https://ci-stretch.nohost.me/ci/logs/cowyo%20(Apps).svg)](https://ci-stretch.nohost.me/ci/apps/cowyo/)/)
 
