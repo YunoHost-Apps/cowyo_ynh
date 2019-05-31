@@ -1,6 +1,6 @@
 # Cowyo for YunoHost
 
-[![Integration level](https://dash.yunohost.org/integration/cowyo.svg)](https://ci-apps.yunohost.org/jenkins/job/cowyo%20%28Community%29/lastBuild/consoleFull)  
+[![Integration level](https://dash.yunohost.org/integration/cowyo.svg)](https://ci-apps.yunohost.org/ci/apps/cowyo/)  
 [![Install cowyo with YunoHost](https://install-app.yunohost.org/install-with-yunohost.png)](https://install-app.yunohost.org/?app=cowyo)
 
 > *This package allow you to install cowyo quickly and simply on a YunoHost server.  
@@ -29,9 +29,9 @@ No configuration required except specifying the domain to access it, and its pub
 
 #### Supported architectures
 
-* x86-64b - [![Build Status](https://ci-apps.yunohost.org/jenkins/job/cowyo%20(Community)/badge/icon)](https://ci-apps.yunohost.org/jenkins/job/cowyo%20(Community)/)
-* ARMv8-A - [![Build Status](https://ci-apps-arm.yunohost.org/jenkins/job/cowyo%20(Community)%20(%7EARM%7E)/badge/icon)](https://ci-apps-arm.yunohost.org/jenkins/job/cowyo%20(Community)%20(%7EARM%7E)/)
-* Jessie x86-64b - [![Build Status](https://ci-stretch.nohost.me/jenkins/job/cowyo%20(Community)/badge/icon)](https://ci-stretch.nohost.me/jenkins/job/cowyo%20(Community)/)
+* x86-64b - [![Build Status](https://ci-apps.yunohost.org/ci/logs/cowyo%20%28Apps%29.svg)](https://ci-apps.yunohost.org/ci/apps/cowyo/)
+* ARMv8-A - [![Build Status](https://ci-apps-arm.yunohost.org/ci/logs/cowyo%20(Community)%20(%7EARM%7E).svg)](https://ci-apps-arm.yunohost.org/ci/apps/cowyo/)
+* Jessie x86-64b - [![Build Status](https://ci-stretch.nohost.me/ci/logs/cowyo%20(Apps).svg)](https://ci-stretch.nohost.me/ci/apps/cowyo/)
 
 ## Limitations
 
