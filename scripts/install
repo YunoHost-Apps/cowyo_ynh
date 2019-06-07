@@ -101,9 +101,17 @@ ynh_add_systemd_config
 # MODIFY A CONFIG FILE
 #=================================================
 
-# Set the systemd service settings
-ynh_replace_string "__PORT__" "$port" "/etc/systemd/system/$app.service"
-systemctl daemon-reload
+cp ../conf/__APP__.sh "$final_path/${app}.sh"
+ynh_replace_string "__PORT__" "$port" "$final_path/${app}.sh"
+ynh_replace_string "__FINALPATH__" "$final_path" "$final_path/${app}.sh"
+chmod +x "$final_path/${app}.sh"
+
+#=================================================
+# STORE THE CONFIG FILE CHECKSUM
+#=================================================
+
+# Calculate and store the config file checksum into the app settings
+ynh_store_file_checksum "$final_path/${app}.sh"
 
 #=================================================
 # GENERIC FINALIZATION
