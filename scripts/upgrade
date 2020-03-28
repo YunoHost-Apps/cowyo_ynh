@@ -18,7 +18,6 @@ app=$YNH_APP_INSTANCE_NAME
 
 domain=$(ynh_app_setting_get --app=$app --key=domain)
 path_url=$(ynh_app_setting_get --app=$app --key=path)
-is_public=$(ynh_app_setting_get --app=$app --key=is_public)
 final_path=$(ynh_app_setting_get --app=$app --key=final_path)
 port=$(ynh_app_setting_get --app=$app --key=port)
 
@@ -39,19 +38,36 @@ upgrade_type=$(ynh_check_app_version_changed)
 #=================================================
 ynh_script_progression --message="Ensuring downward compatibility..." --time --weight=1
 
-# Fix is_public as a boolean value
-if [ "$is_public" = "Yes" ]; then
-	ynh_app_setting_set --app=$app --key=is_public --value=1
-	is_public=1
-elif [ "$is_public" = "No" ]; then
-	ynh_app_setting_set --app=$app --key=is_public --value=0
-	is_public=0
-fi
-
 # If final_path doesn't exist, create it
 if [ -z "$final_path" ]; then
 	final_path=/var/www/$app
 	ynh_app_setting_set --app=$app --key=final_path --value=$final_path
+fi
+
+# Cleaning legacy permissions
+is_public=$(ynh_app_setting_get --app=$app --key=is_public)
+skipped_uris=$(ynh_app_setting_get --app=$app --key=skipped_uris)
+unprotected_uris=$(ynh_app_setting_get --app=$app --key=unprotected_uris)
+protected_uris=$(ynh_app_setting_get --app=$app --key=protected_uris)
+
+# Remove is_public if exists
+if [ ! -z "$is_public" ]; then
+	ynh_app_setting_delete --app=$app --key=is_public
+fi
+
+# Remove skipped_uris if exists
+if [ ! -z "$skipped_uris" ]; then
+	ynh_app_setting_delete --app=$app --key=skipped_uris
+fi
+
+# Remove unprotected_uris if exists
+if [ ! -z "$unprotected_uris" ]; then
+	ynh_app_setting_delete --app=$app --key=unprotected_uris
+fi
+
+# Remove protected_uris if exists
+if [ ! -z "$protected_uris" ]; then
+	ynh_app_setting_delete --app=$app --key=protected_uris
 fi
 
 #=================================================
@@ -99,6 +115,8 @@ then
 
 	# Download, check integrity, uncompress and patch the source from app.src
 	ynh_setup_source --dest_dir="$final_path" --source_id=$architecture
+	# Set execution rights
+	chmod u+x $final_path/cowyo
 fi
 
 #=================================================
@@ -146,16 +164,11 @@ ynh_add_systemd_config
 chown -R $app: $final_path
 
 #=================================================
-# SETUP SSOWAT
+# SETUP PERMISSIONS
 #=================================================
-ynh_script_progression --message="Upgrading SSOwat configuration..." --time --weight=1
+#ynh_script_progression --message="Upgrading permissions configuration..." --time --weight=1
 
-# Make app public if necessary
-if [ $is_public -eq 1 ]
-then
-	# unprotected_uris allows SSO credentials to be passed anyway
-	ynh_app_setting_set --app=$app --key=unprotected_uris --value="/"
-fi
+
 
 #=================================================
 # START SYSTEMD SERVICE
