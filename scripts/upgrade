@@ -25,12 +25,6 @@ port=$(ynh_app_setting_get --app=$app --key=port)
 # CHECK VERSION
 #=================================================
 
-### This helper will compare the version of the currently installed app and the version of the upstream package.
-### $upgrade_type can have 2 different values
-### - UPGRADE_APP if the upstream app version has changed
-### - UPGRADE_PACKAGE if only the YunoHost package has changed
-### ynh_check_app_version_changed will stop the upgrade if the app is up to date.
-### UPGRADE_APP should be used to upgrade the core app only if there's an upgrade to do.
 upgrade_type=$(ynh_check_app_version_changed)
 
 #=================================================
@@ -45,29 +39,10 @@ if [ -z "$final_path" ]; then
 fi
 
 # Cleaning legacy permissions
-is_public=$(ynh_app_setting_get --app=$app --key=is_public)
-skipped_uris=$(ynh_app_setting_get --app=$app --key=skipped_uris)
-unprotected_uris=$(ynh_app_setting_get --app=$app --key=unprotected_uris)
-protected_uris=$(ynh_app_setting_get --app=$app --key=protected_uris)
+if ynh_legacy_permissions_exists; then
+	ynh_legacy_permissions_delete_all
 
-# Remove is_public if exists
-if [ ! -z "$is_public" ]; then
 	ynh_app_setting_delete --app=$app --key=is_public
-fi
-
-# Remove skipped_uris if exists
-if [ ! -z "$skipped_uris" ]; then
-	ynh_app_setting_delete --app=$app --key=skipped_uris
-fi
-
-# Remove unprotected_uris if exists
-if [ ! -z "$unprotected_uris" ]; then
-	ynh_app_setting_delete --app=$app --key=unprotected_uris
-fi
-
-# Remove protected_uris if exists
-if [ ! -z "$protected_uris" ]; then
-	ynh_app_setting_delete --app=$app --key=protected_uris
 fi
 
 #=================================================
@@ -85,25 +60,13 @@ ynh_clean_setup () {
 ynh_abort_if_errors
 
 #=================================================
-# CHECK THE PATH
-#=================================================
-
-# Normalize the URL path syntax
-# N.B. : this is for app installations before YunoHost 2.7
-# where this value might be something like /foo/ or foo/
-# instead of /foo ....
-# If nobody installed your app before 2.7, then you may
-# safely remove this line
-path_url=$(ynh_normalize_url_path --path_url=$path_url)
-
-#=================================================
 # STANDARD UPGRADE STEPS
 #=================================================
 # STOP SYSTEMD SERVICE
 #=================================================
 ynh_script_progression --message="Stopping a systemd service..." --weight=1
 
-ynh_systemd_action --service_name=$app --action="stop" --log_path="/var/log/$app/$app.log"
+ynh_systemd_action --service_name=$app --action=stop --log_path="/var/log/$app/$app.log"
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
@@ -122,7 +85,7 @@ fi
 #=================================================
 # NGINX CONFIGURATION
 #=================================================
-ynh_script_progression --message="Upgrading nginx web server configuration..." --weight=1
+ynh_script_progression --message="Upgrading NGINX web server configuration..." --weight=1
 
 # Create a dedicated nginx config
 ynh_add_nginx_config
@@ -164,23 +127,22 @@ ynh_add_systemd_config
 chown -R $app: $final_path
 
 #=================================================
-# SETUP PERMISSIONS
+# ADVERTISE SERVICE IN ADMIN PANEL
 #=================================================
-#ynh_script_progression --message="Upgrading permissions configuration..." --weight=1
 
-
+yunohost service add $app --description="wiki webserver" --log="/var/log/$app/$app.log"
 
 #=================================================
 # START SYSTEMD SERVICE
 #=================================================
 ynh_script_progression --message="Starting a systemd service..." --weight=1
 
-ynh_systemd_action --service_name=$app --action="start" --log_path="/var/log/$app/$app.log"
+ynh_systemd_action --service_name=$app --action=start --log_path="/var/log/$app/$app.log"
 
 #=================================================
 # RELOAD NGINX
 #=================================================
-ynh_script_progression --message="Reloading nginx web server..." --weight=1
+ynh_script_progression --message="Reloading NGINX web server..." --weight=1
 
 ynh_systemd_action --service_name=nginx --action=reload
 
