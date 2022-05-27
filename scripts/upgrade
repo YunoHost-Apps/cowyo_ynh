@@ -24,8 +24,33 @@ port=$(ynh_app_setting_get --app=$app --key=port)
 #=================================================
 # CHECK VERSION
 #=================================================
+ynh_script_progression --message="Checking version..."
 
 upgrade_type=$(ynh_check_app_version_changed)
+
+#=================================================
+# BACKUP BEFORE UPGRADE THEN ACTIVE TRAP
+#=================================================
+ynh_script_progression --message="Backing up the app before upgrading (may take a while)..." --weight=3
+
+# Backup the current version of the app
+ynh_backup_before_upgrade
+ynh_clean_setup () {
+	ynh_clean_check_starting
+	# Restore it if the upgrade fails
+	ynh_restore_upgradebackup
+}
+# Exit if an error occurs during the execution of the script
+ynh_abort_if_errors
+
+#=================================================
+# STANDARD UPGRADE STEPS
+#=================================================
+# STOP SYSTEMD SERVICE
+#=================================================
+ynh_script_progression --message="Stopping a systemd service..." --weight=1
+
+ynh_systemd_action --service_name=$app --action="stop" --log_path="/var/log/$app/$app.log"
 
 #=================================================
 # ENSURE DOWNWARD COMPATIBILITY
@@ -46,27 +71,12 @@ if ynh_legacy_permissions_exists; then
 fi
 
 #=================================================
-# BACKUP BEFORE UPGRADE THEN ACTIVE TRAP
+# CREATE DEDICATED USER
 #=================================================
-ynh_script_progression --message="Backing up the app before upgrading (may take a while)..." --weight=3
+ynh_script_progression --message="Making sure dedicated system user exists..." --weight=1
 
-# Backup the current version of the app
-ynh_backup_before_upgrade
-ynh_clean_setup () {
-	# restore it if the upgrade fails
-	ynh_restore_upgradebackup
-}
-# Exit if an error occurs during the execution of the script
-ynh_abort_if_errors
-
-#=================================================
-# STANDARD UPGRADE STEPS
-#=================================================
-# STOP SYSTEMD SERVICE
-#=================================================
-ynh_script_progression --message="Stopping a systemd service..." --weight=1
-
-ynh_systemd_action --service_name=$app --action=stop --log_path="/var/log/$app/$app.log"
+# Create a dedicated user (if not existing)
+ynh_system_user_create --username=$app
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
@@ -77,27 +87,35 @@ then
 	ynh_script_progression --message="Upgrading source files..." --weight=3
 
 	# Download, check integrity, uncompress and patch the source from app.src
-	ynh_setup_source --dest_dir="$final_path" --source_id=$architecture
-	# Set execution rights
-	chmod u+x $final_path/cowyo
+	ynh_setup_source --dest_dir="$final_path" --source_id=$YNH_ARCH
 fi
+
+chmod 750 "$final_path"
+chmod -R o-rwx "$final_path"
+chown -R $app:$app "$final_path"
+
+chmod +x "$final_path/cowyo"
 
 #=================================================
 # NGINX CONFIGURATION
 #=================================================
 ynh_script_progression --message="Upgrading NGINX web server configuration..." --weight=1
 
-# Create a dedicated nginx config
+# Create a dedicated NGINX config
 ynh_add_nginx_config
 
 #=================================================
-# CREATE DEDICATED USER
+# SPECIFIC UPGRADE
 #=================================================
-ynh_script_progression --message="Making sure dedicated system user exists..." --weight=1
+# SETUP SYSTEMD
+#=================================================
+ynh_script_progression --message="Upgrading systemd configuration..." --weight=1
 
-# Create a dedicated user (if not existing)
-ynh_system_user_create --username=$app
+# Create a dedicated systemd config
+ynh_add_systemd_config
 
+#=================================================
+# GENERIC FINALIZATION
 #=================================================
 # SETUP LOGROTATE
 #=================================================
@@ -107,28 +125,9 @@ ynh_script_progression --message="Upgrading logrotate configuration..." --weight
 ynh_use_logrotate --non-append
 
 #=================================================
-# SETUP SYSTEMD
+# INTEGRATE SERVICE IN YUNOHOST
 #=================================================
-ynh_script_progression --message="Upgrading systemd configuration..." --weight=1
-
-# Set the systemd service settings
-ynh_replace_string "__PORT__" "$port" "../conf/systemd.service"
-
-# Create a dedicated systemd config
-ynh_add_systemd_config
-
-#=================================================
-# GENERIC FINALIZATION
-#=================================================
-# SECURE FILES AND DIRECTORIES
-#=================================================
-
-# Set permissions on app files
-chown -R $app: $final_path
-
-#=================================================
-# ADVERTISE SERVICE IN ADMIN PANEL
-#=================================================
+ynh_script_progression --message="Integrating service in YunoHost..."
 
 yunohost service add $app --description="wiki webserver" --log="/var/log/$app/$app.log"
 
@@ -137,7 +136,7 @@ yunohost service add $app --description="wiki webserver" --log="/var/log/$app/$a
 #=================================================
 ynh_script_progression --message="Starting a systemd service..." --weight=1
 
-ynh_systemd_action --service_name=$app --action=start --log_path="/var/log/$app/$app.log"
+ynh_systemd_action --service_name=$app --action="start" --log_path="/var/log/$app/$app.log"
 
 #=================================================
 # RELOAD NGINX
