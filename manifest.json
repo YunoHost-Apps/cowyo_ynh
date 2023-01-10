@@ -10,7 +10,6 @@
     "url": "https://github.com/schollz/cowyo",
     "upstream": {
         "license": "MIT",
-        "website": "https://github.com/schollz/cowyo",
         "demo": "https://cowyo.com",
         "admindoc": "https://github.com/schollz/cowyo/blob/master/README.md",
         "code": "https://github.com/schollz/cowyo"
