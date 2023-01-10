@@ -33,7 +33,6 @@ No configuration required except specifying the domain to access it, and its pub
 
 ## Documentations et ressources
 
-* Site officiel de l'app : <https://github.com/schollz/cowyo>
 * Documentation officielle de l'admin : <https://github.com/schollz/cowyo/blob/master/README.md>
 * Dépôt de code officiel de l'app : <https://github.com/schollz/cowyo>
 * Documentation YunoHost pour cette app : <https://yunohost.org/app_cowyo>
