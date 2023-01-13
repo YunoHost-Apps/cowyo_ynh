@@ -18,7 +18,7 @@ Si vous n'avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour
 Cowyo is a self-contained wiki server that makes jotting notes easy and fast. The most important feature here is simplicity. Other features include versioning, page locking, self-destructing messages, encryption, and listifying. See https://github.com/schollz/cowyo#usage
 
 
-**Version incluse :** 2.12.0~ynh4
+**Version incluse :** 2.12.0~ynh5
 
 **Démo :** https://cowyo.com
 ## Avertissements / informations importantes
