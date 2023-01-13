@@ -6,7 +6,7 @@
         "en": "Feature-rich wiki webserver for minimalists",
         "fr": "Serveur de wiki minimaliste mais riche en fonctionnalités"
     },
-    "version": "2.12.0~ynh4",
+    "version": "2.12.0~ynh5",
     "url": "https://github.com/schollz/cowyo",
     "upstream": {
         "license": "MIT",
