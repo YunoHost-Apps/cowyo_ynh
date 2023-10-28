@@ -41,9 +41,9 @@ ram.runtime = "50M"
         amd64.url = "https://github.com/schollz/cowyo/releases/download/v2.12.0/cowyo_linux_amd64"
         amd64.sha256 = "c2f43c87fc3ff73a6a7d12d9db7146c37375a94ecc5f37ae7b1f00b34782e241"
         armhf.url = "https://github.com/schollz/cowyo/releases/download/v2.12.0/cowyo_linux_arm"
-        armhf.sha256 = "85A7BBFE930A636336BEE6EE3E5C44D43826AC0CE56FE462F77878C14F5BC440"
+        armhf.sha256 = "85a7bbfe930a636336bee6ee3e5c44d43826ac0ce56fe462f77878c14f5bc440"
         i386.url = "https://github.com/schollz/cowyo/releases/download/v2.12.0/cowyo_linux_32bit"
-        i386.sha256 = "CD29400F8E8D5B4551D8A6D244C3DF215072651984BE7D67E3619BC26135A13E"
+        i386.sha256 = "cd29400f8e8d5b4551d8a6d244c3df215072651984be7d67e3619bc26135a13e"
 
     [resources.system_user]
 
