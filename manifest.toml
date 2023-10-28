@@ -14,7 +14,6 @@ license = "MIT"
 demo = "https://cowyo.com"
 admindoc = "https://github.com/schollz/cowyo/blob/master/README.md"
 code = "https://github.com/schollz/cowyo"
-website = "https://github.com/schollz/cowyo"
 
 [integration]
 yunohost = ">= 11.2"
@@ -36,8 +35,11 @@ ram.runtime = "50M"
 
 [resources]
         [resources.sources.main]
+        in_subdir = false
+        extract = false
+        rename = "cowyo"
         amd64.url = "https://github.com/schollz/cowyo/releases/download/v2.12.0/cowyo_linux_amd64"
-        amd64.sha256 = "C2F43C87FC3FF73A6A7D12D9DB7146C37375A94ECC5F37AE7B1F00B34782E241"
+        amd64.sha256 = "c2f43c87fc3ff73a6a7d12d9db7146c37375a94ecc5f37ae7b1f00b34782e241"
         armhf.url = "https://github.com/schollz/cowyo/releases/download/v2.12.0/cowyo_linux_arm"
         armhf.sha256 = "85A7BBFE930A636336BEE6EE3E5C44D43826AC0CE56FE462F77878C14F5BC440"
         i386.url = "https://github.com/schollz/cowyo/releases/download/v2.12.0/cowyo_linux_32bit"
