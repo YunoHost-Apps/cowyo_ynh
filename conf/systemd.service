@@ -6,8 +6,8 @@ After=network.target
 Type=simple
 User=__APP__
 Group=__APP__
-WorkingDirectory=__FINALPATH__/
-ExecStart=__FINALPATH__/cowyo --port __PORT__ --host localhost >> /var/log/__APP__.log 2>&1
+WorkingDirectory=__INSTALL_DIR__/
+ExecStart=__INSTALL_DIR__/cowyo --port __PORT__ --host localhost >> /var/log/__APP__.log 2>&1
 
 [Install]
 WantedBy=multi-user.target
