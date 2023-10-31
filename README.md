@@ -5,7 +5,8 @@ It shall NOT be edited by hand.
 
 # Cowyo for YunoHost
 
-[![Integration level](https://dash.yunohost.org/integration/cowyo.svg)](https://dash.yunohost.org/appci/app/cowyo) ![Working status](https://ci-apps.yunohost.org/ci/badges/cowyo.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/cowyo.maintain.svg)  
+[![Integration level](https://dash.yunohost.org/integration/cowyo.svg)](https://dash.yunohost.org/appci/app/cowyo) ![Working status](https://ci-apps.yunohost.org/ci/badges/cowyo.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/cowyo.maintain.svg)
+
 [![Install Cowyo with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=cowyo)
 
 *[Lire ce readme en français.](./README_fr.md)*
@@ -15,27 +16,17 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 
 ## Overview
 
-Cowyo is a self-contained wiki server that makes jotting notes easy and fast. The most important feature here is simplicity. Other features include versioning, page locking, self-destructing messages, encryption, and listifying. See https://github.com/schollz/cowyo#usage
+Cowyo is a self-contained wiki server that makes jotting notes easy and fast. The most important feature here is simplicity. Other features include versioning, page locking, self-destructing messages, encryption, and listifying.
 
 
 **Shipped version:** 2.12.0~ynh5
 
 **Demo:** https://cowyo.com
-## Disclaimers / important information
-
-## Limitations
-
- * By design, *cowyo* requires its own domain.
- 
-## Configuration
-
-No configuration required except specifying the domain to access it, and its public/private status.
-
 ## Documentation and resources
 
 * Official admin documentation: <https://github.com/schollz/cowyo/blob/master/README.md>
 * Upstream app code repository: <https://github.com/schollz/cowyo>
-* YunoHost documentation for this app: <https://yunohost.org/app_cowyo>
+* YunoHost Store: <https://apps.yunohost.org/app/cowyo>
 * Report a bug: <https://github.com/YunoHost-Apps/cowyo_ynh/issues>
 
 ## Developer info
