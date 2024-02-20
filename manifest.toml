@@ -45,6 +45,11 @@ ram.runtime = "50M"
         i386.url = "https://github.com/schollz/cowyo/releases/download/v2.12.0/cowyo_linux_32bit"
         i386.sha256 = "cd29400f8e8d5b4551d8a6d244c3df215072651984be7d67e3619bc26135a13e"
 
+        autoupdate.strategy = "latest_github_release"
+        autoupdate.asset.amd64 = "^cowyo_linux_amd64$"
+        autoupdate.asset.armhf = "^cowyo_linux_arm$"
+        autoupdate.asset.i386 = "^cowyo_linux_32bit$"
+
     [resources.system_user]
 
     [resources.install_dir]
