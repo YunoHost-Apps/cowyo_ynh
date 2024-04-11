@@ -1,3 +1,5 @@
+#:schema https://raw.githubusercontent.com/YunoHost/apps/master/schemas/manifest.v2.schema.json
+
 packaging_format = 2
 
 id = "cowyo"
@@ -5,7 +7,7 @@ name = "Cowyo"
 description.en = "Feature-rich wiki webserver for minimalists"
 description.fr = "Serveur de wiki minimaliste mais riche en fonctionnalités"
 
-version = "2.12.0~ynh5"
+version = "2.12.0~ynh3"
 
 maintainers = ["tituspijean"]
 
