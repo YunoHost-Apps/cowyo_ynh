@@ -3,7 +3,7 @@
 请勿手动编辑。
 -->
 
-# YunoHost 的 Cowyo
+# YunoHost 上的 Cowyo
 
 [![集成程度](https://dash.yunohost.org/integration/cowyo.svg)](https://dash.yunohost.org/appci/app/cowyo) ![工作状态](https://ci-apps.yunohost.org/ci/badges/cowyo.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/cowyo.maintain.svg)
 
