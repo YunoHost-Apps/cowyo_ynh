@@ -18,7 +18,7 @@ Il NE doit PAS être modifié à la main.
 
 Cowyo est un serveur wiki autonome qui permet de prendre des notes facilement et rapidement. La caractéristique la plus importante ici est la simplicité. Les autres fonctionnalités incluent la gestion des versions, le verrouillage des pages, l'autodestruction des messages, le cryptage et la liste.
 
-**Version incluse :** 2.12.0~ynh3
+**Version incluse :** 2.12.0~ynh4
 
 **Démo :** <https://cowyo.com>
 ## Documentations et ressources

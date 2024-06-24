@@ -19,7 +19,7 @@ NON debe editarse manualmente.
 Cowyo is a self-contained wiki server that makes jotting notes easy and fast. The most important feature here is simplicity. Other features include versioning, page locking, self-destructing messages, encryption, and listifying.
 
 
-**Versión proporcionada:** 2.12.0~ynh3
+**Versión proporcionada:** 2.12.0~ynh4
 
 **Demo:** <https://cowyo.com>
 ## Documentación e recursos
