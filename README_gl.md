@@ -5,7 +5,7 @@ NON debe editarse manualmente.
 
 # Cowyo para YunoHost
 
-[![Nivel de integración](https://dash.yunohost.org/integration/cowyo.svg)](https://dash.yunohost.org/appci/app/cowyo) ![Estado de funcionamento](https://ci-apps.yunohost.org/ci/badges/cowyo.status.svg) ![Estado de mantemento](https://ci-apps.yunohost.org/ci/badges/cowyo.maintain.svg)
+[![Nivel de integración](https://dash.yunohost.org/integration/cowyo.svg)](https://ci-apps.yunohost.org/ci/apps/cowyo/) ![Estado de funcionamento](https://ci-apps.yunohost.org/ci/badges/cowyo.status.svg) ![Estado de mantemento](https://ci-apps.yunohost.org/ci/badges/cowyo.maintain.svg)
 
 [![Instalar Cowyo con YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=cowyo)
 

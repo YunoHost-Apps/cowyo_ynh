@@ -5,7 +5,7 @@ EZ editatu eskuz.
 
 # Cowyo YunoHost-erako
 
-[![Integrazio maila](https://dash.yunohost.org/integration/cowyo.svg)](https://dash.yunohost.org/appci/app/cowyo) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/cowyo.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/cowyo.maintain.svg)
+[![Integrazio maila](https://dash.yunohost.org/integration/cowyo.svg)](https://ci-apps.yunohost.org/ci/apps/cowyo/) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/cowyo.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/cowyo.maintain.svg)
 
 [![Instalatu Cowyo YunoHost-ekin](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=cowyo)
 
