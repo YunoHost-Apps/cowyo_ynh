@@ -7,7 +7,7 @@ name = "Cowyo"
 description.en = "Feature-rich wiki webserver for minimalists"
 description.fr = "Serveur de wiki minimaliste mais riche en fonctionnalités"
 
-version = "2.12.0~ynh4"
+version = "2.12.0~ynh5"
 
 maintainers = ["tituspijean"]
 
