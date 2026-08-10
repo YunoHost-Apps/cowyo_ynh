@@ -1,1 +1,1 @@
-Cowyo est un serveur wiki autonome qui permet de prendre des notes facilement et rapidement. La caractéristique la plus importante ici est la simplicité. Les autres fonctionnalités incluent la gestion des versions, le verrouillage des pages, l'autodestruction des messages, le cryptage et la liste.
+Cowyo est un serveur de wiki et pastebin minimaliste qui permet de prendre des notes facilement et rapidement. Les autres fonctionnalités incluent la gestion des versions, le verrouillage des pages, l'autodestruction des messages, et le chiffrement.

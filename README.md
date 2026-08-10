@@ -8,10 +8,10 @@ It shall NOT be edited by hand.
   Cowyo, packaged for YunoHost
 </h1>
 
-Feature-rich wiki webserver for minimalists
+Feature-rich wiki webserver, pastebin for minimalists
 
 [![App Demo](https://img.shields.io/badge/App_Demo-blue?style=for-the-badge)](https://cowyo.com)
-[![Version: 2.12.0~ynh5](https://img.shields.io/badge/Version-2.12.0~ynh5-rgb(18,138,11)?style=for-the-badge)](https://ci-apps.yunohost.org/ci/apps/cowyo/)
+[![Version: 3.0.1~ynh1](https://img.shields.io/badge/Version-3.0.1~ynh1-rgb(18,138,11)?style=for-the-badge)](https://ci-apps.yunohost.org/ci/apps/cowyo/)
 
 <div align="center">
 <a href="https://apps.yunohost.org/app/cowyo"><img height="100px" src="https://github.com/YunoHost/yunohost-artwork/raw/refs/heads/main/badges/neopossum-badges/badge_more_info_on_the_appstore.svg"/></a>

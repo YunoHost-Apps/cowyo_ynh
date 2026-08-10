@@ -11,9 +11,14 @@ ynh_script_progression "Restoring the app main directory..."
 ynh_restore "$install_dir"
 
 #=================================================
-# RESTORE SYSTEM CONFIGURATIONS
+# RESTORE THE DATABASE
 #=================================================
-# RESTORE THE PHP-FPM CONFIGURATION
+ynh_script_progression "Restoring the app main directory..."
+
+ynh_psql_db_shell < db.sql
+
+#=================================================
+# RESTORE SYSTEM CONFIGURATIONS
 #=================================================
 ynh_script_progression "Restoring system configurations related to $app..."
 
@@ -24,14 +29,14 @@ ynh_restore "/etc/nginx/conf.d/$domain.d/$app.conf"
 
 ynh_restore "/etc/logrotate.d/$app"
 
-yunohost service add $app --description="Wiki webserver" --log="/var/log/$app/$app.log"
+yunohost service add $app --description="Minimalistic wiki and pastebin" --log="/var/log/$app/$app.log"
 
 #=================================================
 # START SYSTEMD SERVICE
 #=================================================
 ynh_script_progression "Starting $app's systemd service..."
 
-ynh_systemctl --service=$app --action="start" --log_path="systemd"
+ynh_systemctl --service=$app --action="start"
 
 #=================================================
 # RELOAD NGINX AND PHP-FPM

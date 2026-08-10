@@ -4,18 +4,19 @@ packaging_format = 2
 
 id = "cowyo"
 name = "Cowyo"
-description.en = "Feature-rich wiki webserver for minimalists"
-description.fr = "Serveur de wiki minimaliste mais riche en fonctionnalités"
+description.en = "Feature-rich wiki webserver, pastebin for minimalists"
+description.fr = "Serveur de wiki, pastebin minimaliste et riche en fonctionnalités"
 
-version = "2.12.0~ynh5"
+version = "3.0.1~ynh1"
 
 maintainers = ["tituspijean"]
 
 [upstream]
 license = "MIT"
 demo = "https://cowyo.com"
-admindoc = "https://github.com/schollz/cowyo/blob/master/README.md"
+userdoc = "https://cowyo.com/about"
 code = "https://github.com/schollz/cowyo"
+fund = "https://github.com/sponsors/schollz"
 
 [integration]
 yunohost = ">= 12.1.38"
@@ -38,25 +39,24 @@ ram.runtime = "50M"
 
 [resources]
         [resources.sources.main]
-        in_subdir = false
-        extract = false
-        rename = "cowyo"
-        amd64.url = "https://github.com/schollz/cowyo/releases/download/v2.12.0/cowyo_linux_amd64"
-        amd64.sha256 = "c2f43c87fc3ff73a6a7d12d9db7146c37375a94ecc5f37ae7b1f00b34782e241"
-        armhf.url = "https://github.com/schollz/cowyo/releases/download/v2.12.0/cowyo_linux_arm"
-        armhf.sha256 = "85a7bbfe930a636336bee6ee3e5c44d43826ac0ce56fe462f77878c14f5bc440"
-        i386.url = "https://github.com/schollz/cowyo/releases/download/v2.12.0/cowyo_linux_32bit"
-        i386.sha256 = "cd29400f8e8d5b4551d8a6d244c3df215072651984be7d67e3619bc26135a13e"
-
-        # Starting v3.0, binaries are not prebuilt anymore
-        #autoupdate.strategy = "latest_github_release"
+        url = "https://github.com/schollz/cowyo/archive/refs/tags/v3.0.1.tar.gz"
+        sha256 = "f901a4499327c09de1bebee9c00bc1e476b85fb8ca35d0459e18f60da5558083"
+        autoupdate.strategy = "latest_github_release"
 
     [resources.system_user]
 
     [resources.install_dir]
-    group = "www-data:r-x"
 
     [resources.ports]
 
     [resources.permissions]
     main.url = "/"
+
+    [resources.database]
+    type = "postgresql"
+
+    [resources.go]
+    version = "1.26.5"
+
+    [resources.nodejs]
+    version = "24"
