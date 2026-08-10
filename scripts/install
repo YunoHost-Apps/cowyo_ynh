@@ -12,7 +12,7 @@ ynh_setup_source --dest_dir="$install_dir"
 
 # Air stops if it detects being run from the user's home directory
 # that's however normal in YunoHost's context. Let's ignore that.
-ynh_write_var_in_file --file="$install_dir/.air.toml" --key='ignore_dangerous_root_dir = true' --after='[build]'
+ynh_write_var_in_file --file="$install_dir/.air.toml" --key='ignore_dangerous_root_dir' --value='true' --after='[build]'
 
 #=================================================
 # SYSTEM CONFIGURATION
