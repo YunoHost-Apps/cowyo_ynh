@@ -1,5 +1,5 @@
 [Unit]
-Description=Cowyo: wiki webserver
+Description=Minimalistic wiki and pastebin
 After=network.target
 
 [Service]
@@ -7,7 +7,10 @@ Type=simple
 User=__APP__
 Group=__APP__
 WorkingDirectory=__INSTALL_DIR__/
-ExecStart=__INSTALL_DIR__/cowyo --port __PORT__ --host localhost >> /var/log/__APP__.log 2>&1
+EnvironmentFile=__INSTALL_DIR__/.env
+EnvironmentFile=__INSTALL_DIR__/.custom.env
+ExecStart=__INSTALL_DIR__/make serve -port __PORT__
+
 
 # Sandboxing options to harden security
 # Depending on specificities of your service/app, you may need to tweak these
