@@ -51,3 +51,6 @@ ram.runtime = "50M"
 
     [resources.permissions]
     main.url = "/"
+
+    [resources.database]
+    type = "postgresql"
