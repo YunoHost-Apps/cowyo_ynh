@@ -60,6 +60,3 @@ ram.runtime = "50M"
 
     [resources.nodejs]
     version = "24"
-
-    [resources.apt]
-    packages = ["yq"]

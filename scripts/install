@@ -12,6 +12,7 @@ ynh_setup_source --dest_dir="$install_dir"
 
 # Air stops if it detects being run from the user's home directory
 # that's however normal in YunoHost's context. Let's ignore that.
+go install github.com/mikefarah/yq/v4@latest
 yq eval '.build.ignore_dangerous_root_dir = true' -i $install_dir/.air.toml
 
 #=================================================
