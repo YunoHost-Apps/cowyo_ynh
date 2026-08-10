@@ -18,6 +18,10 @@ ynh_script_progression "Upgrading source files..."
 # Download, check integrity, uncompress and patch the source from app.src
 ynh_setup_source --dest_dir="$install_dir" --full_replace --keep=".custom.env"
 
+# Air stops if it detects being run from the user's home directory
+# that's however normal in YunoHost's context. Let's ignore that.
+yq eval '.build.ignore_dangerous_root_dir = true' -i $install_dir/.air.toml
+
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS
 #=================================================
